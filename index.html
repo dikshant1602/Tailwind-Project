@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Batman</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Press+Start+2P&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    .bgGrid {
+      background-size: 40px 40px;
+      background-image: linear-gradient(to right, #eef2ff 1px, transparent 1px), linear-gradient(to bottom, #eef2ff 1px, transparent 1px);
+    }
+
+    * {
+      font-family: 'JetBrains Mono', sans-serif;
+      font-weight: 300;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Press Start 2P", system-ui;
+    }
+
+    .blueShadow {
+      box-shadow: 0px 14px 55px rgba(19, 18, 29, 0.35);
+    }
+
+    .lightShadow {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lightShadow p {
+      position: relative;
+      z-index: 2;
+    }
+
+    .lightShadow::after {
+      position: absolute;
+      content: '';
+      background: #343434;
+      opacity: 0.04;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      right: 100%;
+      transition-duration: 200ms;
+      z-index: 0;
+    }
+
+    .lightShadow:hover::after {
+      transform: translateX(100%);
+    }
+  </style>
+</head>
+
+<!--relative: lets us position other elements (like backgrounds) based on this.
+text-sm: small text by default.
+sm:text-base: text gets bigger on small screens and up.
+text-[#222222]: dark gray text color.
+min-h-screen: body takes up at least the full height of the screen.
+flex flex-col: stacks all the page parts vertically.-->
+
+<body class="relative text-sm sm:text-base text-[#222222] min-h-screen flex flex-col">
+
+<!--absolute: places it on top of the body.
+inset-0: stretches it to cover the full area.
+bgGrid: a custom background (maybe a grid design).
+z-[-1]: pushes it behind everything else.
+opacity-50: makes it 50% see-through.-->
+  <div class="absolute inset-0 bgGrid z-[-1] opacity-50"></div>
+
+  <!--I'm making it sticky so it stays at the top when scrolling (sticky top-0). It doesn't go wider than 1000px (max-w-[1000px]) and is centered (mx-auto).It takes full width (w-full) with padding that increases on larger screens (p-4 sm:p-8).
+The header layout is flex so I can space out the title and button (flex items-center justify-between).
+The spacing between items grows on larger screens too (gap-4 sm:gap-8).-->
+  <header
+    class="sticky top-0 max-w-[1000px] mx-auto w-full p-4 sm:p-8 gap-4 sm:gap-8 flex items-center justify-between gap-4">
+    <h1 class="">The Dark Knight</h1>
+
+    <!--It has padding on the sides and top/bottom (px-6 py-3),
+has a fully rounded pill shape (rounded-full),
+and has two custom shadows (lightShadow and blueShadow).
+It's white (bg-white) and changes the cursor on hover (cursor-pointer),
+and the text weight is medium (font-medium) to make it stand out slightly.-->
+    <button class=" px-6 lightShadow py-3  cursor-pointer   rounded-full bg-white blueShadow font-medium ">
+      <p>Activate Protocol: Knighfall</p>
+    </button>
+  </header>
+
+  <!--It uses flex layout vertically (flex flex-col) and stretches to fill the remaining space (flex-1).-->
+  <main id="app" class=" flex flex-col flex-1">
+
+    <!--It's stacked vertically (flex flex-col), centered (mx-auto), and maxes out at 1000px width.
+It has padding all around (p-8) and the gaps between elements grow on bigger screens (gap-8 md:gap-14).
+Padding on the top and bottom also increases with screen size (py-10 sm:py-14 md:py-20).-->
+    <section class="flex flex-col max-w-[1000px] w-full mx-auto p-8 gap-8 md:gap-14 py-10 sm:py-14 md:py-20">
+        
+      <!--I'm making it bold (font-bold), centering the text (text-center),
+and increasing the font size responsively from text-2xl up to text-6xl as the screen gets larger.-->
+      <h2 class="font-bold text-2xl sm:text-4xl md:text-5xl lg:text-6xl  text-center">Building Gotham, Line by Line</h2>
+      
+      <!--It’s centered (text-center mx-auto), kept within 800px width (max-w-[800px]),
+and its font size scales up on larger screens (text-base sm:text-lg md:text-xl).-->
+      <p class="mx-auto max-w-[800px] w-full text-center text-base sm:text-lg md:text-xl">From a corner of the world, a spark of admiration for the Dark Knight ignites. Here stands someone who, much like Batman's unwavering dedication to justice in the shadows of Gotham, finds inspiration in his resilience, intellect, and commitment. Whether delving into the rich lore of his world or channeling his spirit into creative endeavors, the legend of Batman resonates deeply 🦇</p>
+      
+      <!--This div holds two buttons in a grid.
+On small screens they stack (grid-cols-1), but on larger screens they sit side by side (sm:grid-cols-2).
+Spacing between them adjusts (gap-4 sm:gap-8),
+and the grid shrinks to fit the buttons and centers itself (sm:w-fit sm:mx-auto).
+I’ve also added vertical padding (py-4).-->
+     
+<div class="grid grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 sm:w-fit sm:mx-auto py-4">
+        <!--This button gives white background, custom shadows, padding, and rounded shape.
+Text grows in size on larger screens, and everything looks clean and clickable.-->
+        <button
+          class=" px-6 lightShadow py-3 sm:px-10 sm:py-4  cursor-pointer   rounded-full bg-white blueShadow font-medium ">
+          <p class=" text-base sm:text-lg md:text-xl">Request Assistance </p>
+        </button>
+        <button
+          class=" px-6 lightShadow py-3 sm:px-10 sm:py-4 bg-[#1e1e1e] cursor-pointer rounded-full blueShadow font-medium ">
+          <p class="text-white text-base sm:text-lg md:text-xl">The Batcave</p>
+        </button>
+      </div>
+      <div class="flex items-center gap-4 mx-auto text-base sm:text-lg">
+        <p>4.9</p>
+        <div class="flex items-center gap-0.5">
+          <i class="fa-solid fa-star text-amber-400"></i>
+          <i class="fa-solid fa-star text-amber-400"></i>
+          <i class="fa-solid fa-star text-amber-400"></i>
+          <i class="fa-solid fa-star text-amber-400"></i>
+          <div class="grid place-items-center relative">
+            <div class="flex justify-end w-[40%] absolute top-1/2 -translate-y-1/2 right-0 overflow-hidden">
+              <i class="fa-solid fa-star text-white"></i>
+            </div>
+            <i class="fa-solid fa-star text-amber-400"></i>
+          </div>
+        </div>
+        <p>(2500+ Cases Solved)</p>
+      </div>
+
+    </section>
+  </main>
+  <footer class="flex items-center justify-center py-10">
+    <p>Do you bleed? 🩸</p>
+  </footer>
+</body>
+
+</html>
